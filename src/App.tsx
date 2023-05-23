@@ -5,7 +5,6 @@ import Dashboard from "./pages/dashboard";
 import Login from "./pages/login";
 
 function App() {
-  console.log(window.location.pathname);
   return (
     <>
       <Router>

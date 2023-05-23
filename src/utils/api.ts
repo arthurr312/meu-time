@@ -1,0 +1,1 @@
+export const api = "https://v3.football.api-sports.io"
