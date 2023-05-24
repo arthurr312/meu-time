@@ -10,7 +10,7 @@ const fetchData = async (country: string) => {
       "x-rapidapi-key": api_key,
     },
   });
-  return response.data?.response?.league;
+  return response.data?.response;
 };
 
 export function useLeaguesData(country: string) {

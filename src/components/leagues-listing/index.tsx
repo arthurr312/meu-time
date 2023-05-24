@@ -2,7 +2,11 @@ import * as S from "./styles";
 import { Loader } from "../loader";
 import { useLeaguesData } from "../../services/leagues";
 
-type LeagueData = Record<"name" | "type" | "logo", string>;
+type LeagueData = {
+  name: string;
+  logo: string;
+  league: Omit<LeagueData, "league">;
+};
 
 interface LeagueListingProps {
   param: string;
@@ -18,12 +22,11 @@ export function LeaguesListing({ param }: LeagueListingProps) {
       {data?.map((item: LeagueData) => (
         <div className="listing-container">
           <div className="flag-alignment">
-            <img src={item.logo} alt="flag" />
-            <span>{item.name}</span>
+            <img src={item.league.logo} alt="flag" />
+            <span>{item.league.name}</span>
           </div>
           <button
             key={item.name}
-            //onClick={() => handleGetCountryName(item.name)}
             className="leagues-container"
           >
             <S.ArrowIcon />
