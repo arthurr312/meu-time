@@ -3,7 +3,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 export const LeaguesContainer = styled.div`
   display: flex;
-  height: 100vh;
+  height: 500px;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
