@@ -16,33 +16,47 @@ interface LeagueListingProps {
 }
 
 export function LeaguesListing({ param }: LeagueListingProps) {
-  const [leagueId, setLeagueId] = useState<number | undefined>();
-  //const { data, isLoading } = useLeaguesData(param);
+  const [leagueId, setLeagueId] = useState<number>(0);
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const { data, isLoading } = useLeaguesData(param);
+
+  const handleGetLeagueId = (leagueId: number) => {
+    setLeagueId(leagueId);
+    setOpenModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenModal(false);
+  };
 
   return (
     <>
-      {/* {isLoading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <S.LeaguesListingContainer>
           {data?.map((item: LeagueData) => (
-            <div className="listing-container">
+            <div key={item.name} className="listing-container">
               <div className="flag-alignment">
                 <img src={item.league.logo} alt="flag" />
                 <span>{item.league.name}</span>
               </div>
               <button
-                onClick={() => alert(item.league.id)}
-                key={item.name}
+                onClick={() => handleGetLeagueId(item.league.id)}
                 className="leagues-container"
               >
                 <S.ArrowIcon />
               </button>
             </div>
           ))}
+          <Modal
+            setOpen={setOpenModal}
+            open={openModal}
+            leagueId={leagueId}
+            closeModal={handleClose}
+          />
         </S.LeaguesListingContainer>
-      )} */}
-      <Modal />
+      )}
     </>
   );
 }

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Overlay = styled.div`
+interface OverlayProps {
+  isOpen: boolean;
+}
+
+export const Overlay = styled.div<OverlayProps>`
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
   width: 100%;
@@ -8,7 +12,7 @@ export const Overlay = styled.div`
   flex: 1;
   left: 0;
   top: 0;
-  display: flex;
+  display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
   align-items: center;
   justify-content: center;
 `;
@@ -23,7 +27,6 @@ export const Container = styled.div`
   h1 {
     font-size: 22px;
     color: black;
-    text-align: center;
   }
 
   .seasons-container {
@@ -45,6 +48,24 @@ export const Container = styled.div`
         transition-duration: 300ms;
         background: #d9d9d9;
       }
+      &:focus {
+        background: #d9d9d9;
+      }
     }
+  }
+`;
+
+export const Footer = styled.footer`
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  .cancel-button {
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    margin-right: 8px;
+    color: black;
   }
 `;

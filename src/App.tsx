@@ -4,6 +4,7 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import Dashboard from "./pages/dashboard";
 import Login from "./pages/login";
 import Leagues from "./pages/leagues";
+import Seasons from "./pages/seasons";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/leagues/:country" element={<Leagues />} />
-
+          <Route path="/leagues/:country/leagueId/:season" element={<Seasons />} />
         </Routes>
       </Router>
     </>

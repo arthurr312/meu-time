@@ -18,13 +18,12 @@ export function CountriesListing() {
   ) : (
     <S.CountriesListingContainer>
       {data?.map((item: CountryData) => (
-        <div className="listing-container">
+        <div key={item.name} className="listing-container">
           <div className="flag-alignment">
             <img src={item.flag} alt="flag" />
             <span>{item.name}</span>
           </div>
           <button
-            key={item.name}
             onClick={() => handleGetCountryName(item.name)}
             className="countries-container"
           >

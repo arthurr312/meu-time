@@ -11,7 +11,7 @@ export function useSeasonsData() {
         "x-rapidapi-key": api_key,
       },
     });
-    return response.data?.response;
+    return response.data;
   };
   const query = useQuery({
     refetchOnWindowFocus: false,
