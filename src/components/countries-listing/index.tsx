@@ -1,16 +1,16 @@
-import { useState } from "react";
 import { useCountriesData } from "../../services/countries";
 import * as S from "./styles";
 import { Loader } from "../loader";
+import { useNavigate } from "react-router-dom";
 
 type CountryData = Record<"name" | "code" | "flag", string>;
 
 export function CountriesListing() {
-  const [countryName, setCountryName] = useState<string>();
+  const navigate = useNavigate();
   const { data, isLoading } = useCountriesData();
 
   const handleGetCountryName = (name: string) => {
-    setCountryName(name);
+    navigate(`/leagues/${name?.toLowerCase()}`);
   };
 
   return isLoading ? (
@@ -25,7 +25,7 @@ export function CountriesListing() {
           </div>
           <button
             key={item.name}
-            onClick={() => alert(item.code)}
+            onClick={() => handleGetCountryName(item.name)}
             className="countries-container"
           >
             <S.ArrowIcon />

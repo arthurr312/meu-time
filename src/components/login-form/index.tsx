@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { Button } from "../button";
 import * as S from "./styles";
 
@@ -6,7 +5,7 @@ interface LoginFormProps {
   path: string;
 }
 export function LoginForm({ path }: LoginFormProps) {
-  const navigate = useNavigate();
+  const login = () => window.location.href = path;
   return (
     <S.LoginFormContainer>
       <h1>Meu Time - Faça login para continuar</h1>
@@ -19,11 +18,7 @@ export function LoginForm({ path }: LoginFormProps) {
       <Button
         disabled={false}
         text="Entrar"
-        onClick={() =>
-          setTimeout(() => {
-            navigate(path);
-          }, 2000)
-        }
+        onClick={login}
         type="button"
       />
     </S.LoginFormContainer>

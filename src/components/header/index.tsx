@@ -1,6 +1,6 @@
 import * as S from "./styles";
-import { Link } from "react-router-dom";
 export function Header() {
+  const logout = () => (window.location.href = "/login");
   return (
     <>
       <S.HeaderContainer>
@@ -9,12 +9,10 @@ export function Header() {
             <h1>Meu Time ⚽</h1>
             <h2>Acompanhe as informações do seu time.</h2>
           </div>
-          <Link to="/login">
-            <button type="button">
-              <S.LogoutIcon />
-              <span>Sair</span>
-            </button>
-          </Link>
+          <button type="button" onClick={logout}>
+            <S.LogoutIcon />
+            <span>Sair</span>
+          </button>
         </S.Content>
       </S.HeaderContainer>
     </>
