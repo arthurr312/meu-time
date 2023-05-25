@@ -2,6 +2,7 @@ import * as S from "./styles";
 import { Loader } from "../loader";
 import { useChampionshipData } from "../../services/season-championship";
 import { ChampionshipListingProps } from "../championship-container";
+import { useNavigate, useParams } from "react-router-dom";
 
 type ChampionshipData = {
   name: string;
@@ -14,8 +15,14 @@ export function ChampionshipListing({
   leagueId,
   season,
 }: ChampionshipListingProps) {
+  const navigate = useNavigate();
+  const { country } = useParams();
   const { data, isLoading } = useChampionshipData(leagueId, season);
-  console.log(data);
+
+  const handleGetTeamId = () => {
+    navigate(`/leagues/${country}/flamengo/${season}`);
+  };
+
   return (
     <>
       {isLoading ? (
@@ -31,7 +38,7 @@ export function ChampionshipListing({
                   <span>Fundado em {item.team?.founded}</span>
                 </div>
               </div>
-              <button className="teams-container">
+              <button onClick={handleGetTeamId} className="teams-container">
                 <S.ArrowIcon />
               </button>
             </div>
