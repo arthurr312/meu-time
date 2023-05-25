@@ -1,3 +1,12 @@
+import { useParams } from "react-router-dom";
+import { ChampionShipContainer } from "../../components/championship-container";
+
 export default function Seasons() {
-    return <h1>pagina da temporada</h1>
+  const { leagueId, season } = useParams();
+  return (
+    <ChampionShipContainer
+      leagueId={Number(leagueId)}
+      season={Number(season)}
+    />
+  );
 }

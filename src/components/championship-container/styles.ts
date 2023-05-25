@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 
-export const CountriesContainer = styled.div`
+export const ChampionshipContainer = styled.div`
   display: flex;
   height: 500px;
   position: relative;
