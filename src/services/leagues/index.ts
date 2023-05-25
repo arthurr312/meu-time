@@ -19,7 +19,7 @@ export function useLeaguesData(country: string) {
     refetchOnMount: false,
     queryFn: () => fetchData(country),
     enabled: !!country,
-    queryKey: ["seasons-data"],
+    queryKey: ["league-data"],
   });
 
   return query;

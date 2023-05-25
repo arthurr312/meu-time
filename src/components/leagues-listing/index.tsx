@@ -18,7 +18,7 @@ interface LeagueListingProps {
 export function LeaguesListing({ param }: LeagueListingProps) {
   const [leagueId, setLeagueId] = useState<number>(0);
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const { data, isLoading } = useLeaguesData(param);
+  const { data: leaguesData, isLoading } = useLeaguesData(param);
 
   const handleGetLeagueId = (leagueId: number) => {
     setLeagueId(leagueId);
@@ -35,7 +35,7 @@ export function LeaguesListing({ param }: LeagueListingProps) {
         <Loader />
       ) : (
         <S.LeaguesListingContainer>
-          {data?.map((item: LeagueData) => (
+          {leaguesData?.map((item: LeagueData) => (
             <div key={item.name} className="listing-container">
               <div className="flag-alignment">
                 <img src={item.league.logo} alt="flag" />

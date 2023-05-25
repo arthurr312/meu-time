@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { useSeasonsData } from "../../services/seasons";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./styles";
 import ReactDOM from "react-dom";
 import { Button } from "../button";
 import { useState } from "react";
+import { useSeasonsData } from "../../services/seasons";
 
 interface ModalProps {
   open: boolean;
@@ -19,17 +19,19 @@ export default function Modal({
   closeModal,
 }: ModalProps) {
   const [season, setSeason] = useState<number>(0);
-  const { data } = useSeasonsData();
+  const {pathname} = useLocation();
+  const { data} = useSeasonsData();
+  
   const navigate = useNavigate();
   const handleGetSeason = (season: number) => {
-    navigate(`/${leagueId}/${season}`);
+    navigate(`${pathname}/${leagueId}/${season}`);
   };
   return ReactDOM.createPortal(
     <S.Overlay isOpen={open}>
       <S.Container>
         <h1>Selecione uma temporada</h1>
         <div className="seasons-container">
-          {/* {data?.map((season: number) => (
+          {data?.map((season: number) => (
             <button
               onClick={() => {
                 setSeason(season);
@@ -38,7 +40,7 @@ export default function Modal({
             >
               {season}
             </button>
-          ))} */}
+          ))}
         </div>
         <S.Footer>
           <button onClick={closeModal} className="cancel-button" type="button">
@@ -48,7 +50,7 @@ export default function Modal({
             disabled={false}
             text="Próximo"
             type="button"
-            //onClick={() => handleGetSeason(season)}
+            onClick={() => handleGetSeason(season)}
           />
         </S.Footer>
       </S.Container>

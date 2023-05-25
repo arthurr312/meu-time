@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/leagues/:country" element={<Leagues />} />
-          <Route path="/leagues/:country/leagueId/:season" element={<Seasons />} />
+          <Route path="/leagues/:country/:leagueId/:season" element={<Seasons />} />
         </Routes>
       </Router>
     </>
