@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 import ReactDOM from "react-dom";
 import { Button } from "../button";
@@ -19,12 +19,11 @@ export default function Modal({
   closeModal,
 }: ModalProps) {
   const [season, setSeason] = useState<number>(0);
-  const {pathname} = useLocation();
-  const { data} = useSeasonsData();
-  
+  const { data } = useSeasonsData();
+
   const navigate = useNavigate();
   const handleGetSeason = (season: number) => {
-    navigate(`${pathname}/${leagueId}/${season}`);
+    navigate(`${leagueId}/${season}`);
   };
   return ReactDOM.createPortal(
     <S.Overlay isOpen={open}>

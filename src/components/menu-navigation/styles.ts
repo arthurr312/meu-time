@@ -1,9 +1,29 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div`
-    background: #e8e9eb;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
-    height: 100%;
-    width: 30%;
+export const MenuNavigationContaainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #e8e9eb;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
+  height: 500px;
+  width: 30%;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+
+  .card-navigation {
+    cursor: pointer;
+    text-align: start;
+    border: none;
+    width: 100%;
+    background: #fff;
+    padding: 0.75rem;
     border-radius: 0.375rem;
+    &:hover,
+    &:focus {
+      background: #526aae;
+      transition-duration: 300ms;
+      color: #fff;
+    }
+  }
 `;
