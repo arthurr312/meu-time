@@ -1,4 +1,3 @@
-import { GeneralInformation } from "../general-information";
 import * as S from "./styles";
 
 type OptionsTypes = {
@@ -7,23 +6,27 @@ type OptionsTypes = {
 };
 
 interface MenuNavigationProps {
-  children?: React.ReactNode;
   optionTitles: OptionsTypes[];
+  setSelectedOption: React.Dispatch<React.SetStateAction<number>>;
 }
 export function MenuNavigation({
-  children,
   optionTitles,
+  setSelectedOption,
 }: MenuNavigationProps) {
   return (
     <>
       <S.MenuNavigationContainer>
         {optionTitles.map((item: OptionsTypes) => (
-          <button key={item.id} type="button" className="card-navigation">
+          <button
+            onClick={() => setSelectedOption(item.id)}
+            key={item.id}
+            type="button"
+            className="card-navigation"
+          >
             <span>{item.title}</span>
           </button>
         ))}
       </S.MenuNavigationContainer>
-      <GeneralInformation />
     </>
   );
 }

@@ -13,6 +13,7 @@ export const MenuNavigationContainer = styled.div`
 
   .card-navigation {
     cursor: pointer;
+    transition-duration: 300ms;
     text-align: start;
     border: none;
     width: 100%;
@@ -22,7 +23,6 @@ export const MenuNavigationContainer = styled.div`
     &:hover,
     &:focus {
       background: #526aae;
-      transition-duration: 300ms;
       color: #fff;
     }
   }
