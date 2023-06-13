@@ -16,13 +16,13 @@ export function MenuNavigation({
 }: MenuNavigationProps) {
   return (
     <>
-      <S.MenuNavigationContaainer>
+      <S.MenuNavigationContainer>
         {optionTitles.map((item: OptionsTypes) => (
           <button key={item.id} type="button" className="card-navigation">
             <span>{item.title}</span>
           </button>
         ))}
-      </S.MenuNavigationContaainer>
+      </S.MenuNavigationContainer>
       <GeneralInformation />
     </>
   );

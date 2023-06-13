@@ -1,28 +1,30 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import * as S from "./styles";
 import ReactDOM from "react-dom";
 import { Button } from "../button";
-import { useState } from "react";
 import { useSeasonsData } from "../../services/seasons";
 
 interface ModalProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedSeason: number | null;
+  setSelectedSeason: React.Dispatch<React.SetStateAction<number | null>>;
   leagueId: number;
   closeModal: () => void;
 }
 
 export default function Modal({
   open,
-  leagueId,
   setOpen,
+  selectedSeason,
+  setSelectedSeason,
+  leagueId,
   closeModal,
 }: ModalProps) {
-  const [season, setSeason] = useState<number>(0);
   const { data } = useSeasonsData();
-
   const navigate = useNavigate();
-  const handleGetSeason = (season: number) => {
+  const handleGetSeason = (season: number | null) => {
     navigate(`${leagueId}/${season}`);
   };
   return ReactDOM.createPortal(
@@ -33,8 +35,13 @@ export default function Modal({
           {data?.map((season: number) => (
             <button
               onClick={() => {
-                setSeason(season);
+                setSelectedSeason(season);
                 setOpen(true);
+              }}
+              style={{
+                background: `${
+                  selectedSeason === season ? "#d9d9d9" : "transparent"
+                }`,
               }}
             >
               {season}
@@ -46,10 +53,10 @@ export default function Modal({
             Cancelar
           </button>
           <Button
-            disabled={false}
+            disabled={!selectedSeason}
             text="Próximo"
             type="button"
-            onClick={() => handleGetSeason(season)}
+            onClick={() => handleGetSeason(selectedSeason)}
           />
         </S.Footer>
       </S.Container>

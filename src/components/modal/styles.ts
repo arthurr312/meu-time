@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-interface OverlayProps {
-  isOpen: boolean;
+interface StyleProps {
+  isOpen?: boolean;
 }
 
-export const Overlay = styled.div<OverlayProps>`
+export const Overlay = styled.div<StyleProps>`
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
   width: 100%;
@@ -37,20 +37,13 @@ export const Container = styled.div`
 
     button {
       border: 1px solid black;
-      background: transparent;
+      transition-duration: 300ms;
       cursor: pointer;
       padding: 3px 10px;
       border-radius: 0.25rem;
       color: black;
       font-weight: bold;
       font-size: 1.25rem;
-      &:hover {
-        transition-duration: 300ms;
-        background: #d9d9d9;
-      }
-      &:focus {
-        background: #d9d9d9;
-      }
     }
   }
 `;

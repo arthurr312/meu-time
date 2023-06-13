@@ -18,6 +18,7 @@ interface LeagueListingProps {
 export function LeaguesListing({ param }: LeagueListingProps) {
   const [leagueId, setLeagueId] = useState<number>(0);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [selectedSeason, setSelectedSeason] = useState<number | null>(0);
   const { data: leaguesData, isLoading } = useLeaguesData(param);
 
   const handleGetLeagueId = (leagueId: number) => {
@@ -27,6 +28,7 @@ export function LeaguesListing({ param }: LeagueListingProps) {
 
   const handleClose = () => {
     setOpenModal(false);
+    setSelectedSeason(null);
   };
 
   return (
@@ -52,6 +54,8 @@ export function LeaguesListing({ param }: LeagueListingProps) {
           <Modal
             setOpen={setOpenModal}
             open={openModal}
+            setSelectedSeason={setSelectedSeason}
+            selectedSeason={selectedSeason}
             leagueId={leagueId}
             closeModal={handleClose}
           />

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MenuNavigationContaainer = styled.div`
+export const MenuNavigationContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
