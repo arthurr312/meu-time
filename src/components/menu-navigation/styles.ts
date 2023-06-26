@@ -20,10 +20,5 @@ export const MenuNavigationContainer = styled.div`
     background: #fff;
     padding: 0.75rem;
     border-radius: 0.375rem;
-    &:hover,
-    &:focus {
-      background: #526aae;
-      color: #fff;
-    }
   }
 `;

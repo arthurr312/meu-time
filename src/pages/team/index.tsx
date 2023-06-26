@@ -25,6 +25,7 @@ export default function Team() {
     <S.TeamContainer>
       <MenuNavigation
         optionTitles={titles}
+        selectedOption={selectedOption}
         setSelectedOption={setSelectedOption}
       />
       {selectedOption === 1 && <GeneralInformation />}

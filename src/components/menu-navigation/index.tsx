@@ -7,10 +7,12 @@ type OptionsTypes = {
 
 interface MenuNavigationProps {
   optionTitles: OptionsTypes[];
+  selectedOption: number;
   setSelectedOption: React.Dispatch<React.SetStateAction<number>>;
 }
 export function MenuNavigation({
   optionTitles,
+  selectedOption,
   setSelectedOption,
 }: MenuNavigationProps) {
   return (
@@ -22,6 +24,14 @@ export function MenuNavigation({
             key={item.id}
             type="button"
             className="card-navigation"
+            style={{
+              background: `${
+                selectedOption === item.id ? "#526aae" : "transparent"
+              }`,
+              color: `${
+                selectedOption === item.id ? "#fff" : "#000"
+              }`
+            }}
           >
             <span>{item.title}</span>
           </button>
