@@ -1,17 +1,26 @@
 import { useCountriesData } from "../../services/countries";
 import * as S from "./styles";
-import { Loader } from "../loader";
+import { Loader } from "../ui/loader";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 type CountryData = Record<"name" | "code" | "flag", string>;
 
-export function CountriesListing() {
+interface CountriesListingProps {
+  country: string | null;
+}
+
+export function CountriesListing({country}: CountriesListingProps) {
   const navigate = useNavigate();
-  const { data, isLoading } = useCountriesData();
+  const { data, isLoading, refetch } = useCountriesData(country);
 
   const handleGetCountryName = (name: string) => {
     navigate(`/leagues/${name?.toLowerCase()}`);
   };
+
+  useEffect(() => {
+    refetch();
+  }, [refetch, country]);
 
   return isLoading ? (
     <Loader />

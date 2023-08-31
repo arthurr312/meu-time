@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import * as S from "./styles";
 import ReactDOM from "react-dom";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 import { useSeasonsData } from "../../services/seasons";
 
 interface ModalProps {

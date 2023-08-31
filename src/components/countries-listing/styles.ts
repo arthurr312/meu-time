@@ -9,17 +9,17 @@ export const CountriesListingContainer = styled.div`
   flex-direction: column;
   gap: 5px;
   margin: 0 auto;
-  margin-top: 12px;
+
   h1 {
     font-size: 24px;
     font-weight: bold;
     color: #000;
   }
+
   .listing-container {
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    border: none;
     border-bottom: 2px solid lightgray;
     background: transparent;
     align-items: center;
@@ -40,6 +40,11 @@ export const CountriesListingContainer = styled.div`
       gap: 10px;
     }
   }
+
+  .listing-container:nth-last-child(1) {
+    border-bottom: none;
+  }
+
   .countries-container {
     border: none;
     background: transparent;

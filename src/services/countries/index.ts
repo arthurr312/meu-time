@@ -3,14 +3,17 @@ import axios from "axios";
 import { api_key, rapidapi_host } from "../../utils/headers";
 import { api } from "../../utils/api";
 
-export function useCountriesData() {
+export function useCountriesData(country?: string | null) {
   const fetchData = async () => {
-    const response = await axios.get(`${api}/countries`, {
-      headers: {
-        "x-rapidapi-host": rapidapi_host,
-        "x-rapidapi-key": api_key,
-      },
-    });
+    const response = await axios.get(
+      `${api}/countries${country ? `?name=${country}` : ""}`,
+      {
+        headers: {
+          "x-rapidapi-host": rapidapi_host,
+          "x-rapidapi-key": api_key,
+        },
+      }
+    );
     return response.data?.response;
   };
   const query = useQuery({

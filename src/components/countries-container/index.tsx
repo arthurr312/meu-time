@@ -1,10 +1,15 @@
+import { useState, useDeferredValue } from "react";
 import { CountriesListing } from "../countries-listing";
+import { Input } from "../ui/input";
 import * as S from "./styles";
 export function CountriesContainer() {
+  const [country, setCountry] = useState<string | null>(null);
+  const deferredCountry = useDeferredValue(country);
   return (
     <S.CountriesContainer>
       <h1>Selecione um país para começar</h1>
-      <CountriesListing />
+      <Input setCountry={setCountry}/>
+      <CountriesListing country={deferredCountry}/>
     </S.CountriesContainer>
   );
 }

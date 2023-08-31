@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { Loader } from "../loader";
+import { Loader } from "../ui/loader";
 import { useLeaguesData } from "../../services/leagues";
 import { useState } from "react";
 import Modal from "../modal";

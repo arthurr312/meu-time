@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { Loader } from "../loader";
+import { Loader } from "../ui/loader";
 import { useChampionshipData } from "../../services/season-championship";
 import { ChampionshipListingProps } from "../championship-container";
 import { useNavigate, useParams } from "react-router-dom";
