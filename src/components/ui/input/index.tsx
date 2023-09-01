@@ -1,7 +1,7 @@
 import * as S from "./styles";
 
 interface InputProps {
-  setCountry: React.Dispatch<React.SetStateAction<string | null>>;
+  setCountry: React.Dispatch<React.SetStateAction<string>>;
 }
 export function Input({ setCountry }: InputProps) {
   return (

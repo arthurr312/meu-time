@@ -7,10 +7,10 @@ import { useEffect } from "react";
 type CountryData = Record<"name" | "code" | "flag", string>;
 
 interface CountriesListingProps {
-  country: string | null;
+  country: string;
 }
 
-export function CountriesListing({country}: CountriesListingProps) {
+export function CountriesListing({ country }: CountriesListingProps) {
   const navigate = useNavigate();
   const { data, isLoading, refetch } = useCountriesData(country);
 
@@ -20,26 +20,30 @@ export function CountriesListing({country}: CountriesListingProps) {
 
   useEffect(() => {
     refetch();
-  }, [refetch, country]);
+  }, [country]);
 
   return isLoading ? (
     <Loader />
   ) : (
     <S.CountriesListingContainer>
-      {data?.map((item: CountryData) => (
-        <div key={item.name} className="listing-container">
-          <div className="flag-alignment">
-            <img src={item.flag} alt="flag" />
-            <span>{item.name}</span>
+      {data.length === 0 ? (
+        <h1 style={{textAlign: "center"}}>Nenhum país foi encontrado</h1>
+      ) : (
+        data?.map((item: CountryData) => (
+          <div key={item.name} className="listing-container">
+            <div className="flag-alignment">
+              <img src={item.flag} alt="flag" />
+              <span>{item.name}</span>
+            </div>
+            <button
+              onClick={() => handleGetCountryName(item.name)}
+              className="countries-container"
+            >
+              <S.ArrowIcon />
+            </button>
           </div>
-          <button
-            onClick={() => handleGetCountryName(item.name)}
-            className="countries-container"
-          >
-            <S.ArrowIcon />
-          </button>
-        </div>
-      ))}
+        ))
+      )}
     </S.CountriesListingContainer>
   );
 }
